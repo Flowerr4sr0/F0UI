@@ -1,3 +1,8 @@
+export const F0UIMODINFO = {
+    name: "Context Menu (BUILTIN)",
+    author: "F0UI Devs",
+    dependencies: [""]
+};
 
 class CTXTMenu {
     constructor(definition) {
