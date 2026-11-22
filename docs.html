@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F0UI Docs</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #101218;
+    color: #e8edf7;
+    font-family: Arial, sans-serif;
+}
+
+/* TOPBAR */
+
+.topbar {
+    height: 60px;
+    background: #171b25;
+    border-bottom: 1px solid #303849;
+    display: flex;
+    align-items: center;
+    padding: 0 22px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #8ab4ff;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    background: #171b25;
+    border-right: 1px solid #303849;
+    padding: 20px 12px;
+    overflow-y: auto;
+}
+
+.sidebar-section {
+    color: #778399;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 10px 7px;
+}
+
+.sidebar button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 10px 12px;
+    margin: 3px 0;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: #aab4c5;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.sidebar button:hover {
+    background: #252d3c;
+    color: white;
+}
+
+.sidebar button.active {
+    background: #263958;
+    color: #8ab4ff;
+}
+
+/* RIGHT PAGE */
+
+.content {
+    margin-left: 250px;
+    padding: 100px 55px;
+    min-height: 100vh;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.page h1 {
+    font-size: 32px;
+    margin: 0 0 15px;
+}
+
+.page-content {
+    color: #aab4c5;
+    line-height: 1.7;
+}
+
+/* MOBILE */
+
+.menu-button {
+    display: none;
+    margin-right: 15px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+@media(max-width: 700px) {
+    .menu-button {
+        display: block;
+    }
+
+    .sidebar {
+        display: none;
+        z-index: 9;
+    }
+
+    .sidebar.open {
+        display: block;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 90px 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+    <button class="menu-button" onclick="toggleSidebar()">☰</button>
+    <div class="logo">F0UI Docs</div>
+</header>
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-section">Getting Started</div>
+    <button onclick="openPage('installation', this)">Installation</button>
+
+</aside>
+
+<main class="content">
+    <section class="page" id="installation">
+        <h1>Installation</h1>
+        <div class="page-content">
+            <p>Download the latest F0UI Kit and download F0UI.zip.</p>
+            <a href="https://github.com/Flowerr4sr0/F0UI/releases/latest"><p>DOWNLOAD</p></a>
+        </div>
+    </section>
+</main>
+
+<script>
+function openPage(id, button) {
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    document.querySelectorAll(".sidebar button").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+    button.classList.add("active");
+
+    document.getElementById("sidebar").classList.remove("open");
+    window.scrollTo(0, 0);
+}
+
+function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("open");
+}
+</script>
+
+</body>
+</html>
